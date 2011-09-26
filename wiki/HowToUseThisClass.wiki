@@ -1,0 +1,53 @@
+#summary How to use this class .
+
+==Introduction==
+
+Before you can use this class you need to download a C# library which was created by Daren Willman. http://api.face.com/lib/FaceRestAPI.cs . include it in your project folder. 
+
+
+== Details ==
+===Steps===
+1. Create a New instance of the class  
+
+` FaceApi api = new FaceApi(apikey,apisecret); `
+
+you can get your apikey and apisecret code from Face.com website . 
+
+2. To train your application you can use train function . 
+
+    /*Inputs 
+         * urls - the urls of the photos of the person
+         * name - name of the person in the photos*/
+     `    api.train(List<string> urls,string name) ` 
+*or*
+
+ /*Inputs 
+      * filename - the local address of the photos of the person
+      * name - name of the person in the photos*/
+     `   api.train(string filename, string name)  ` 
+        
+3. To Recognize faces you can use recognizefaces function. 
+ /*Inputs - 
+         * urls - Urls for the photos to recognize from 
+         * strs - names of the faces to recognize (should be trained before using train function ) . .
+         */
+         
+     `   XmlDocument xml= api.recognizefaces(List<string> urls,List<string> names) ` 
+ 
+/* output = xml file with the details of the faces and the confidence in the faces recognized . 
+
+     /*Inputs - 
+     * fileaddress -Local file path for the photo to recognize from 
+     * strs - names of the faces to recognize (should be trained before using train function ) .
+     */
+
+     ` XmlDocument xml= api.recognizefaces(string filename,List<string> names) `
+
+/* output = xml file with the details of the faces and the confidence in the faces recognized . 
+
+
+All the name variable should be with the face.com api namespace , 
+for example if i want to train my photo the name variable will be , rajat@gyl.rajat . and i will call  
+ `   api.train("C:\\rajat.jpg:,"rajat@gyl.rajat")  `
+
+because my app namespace is gyl.rajat .
