@@ -1,0 +1,1 @@
+Class to easily use Face.com API . The class can be used to Train and Recognize Faces using simple function calls .
